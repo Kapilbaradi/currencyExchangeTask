@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  margin: 3rem auto;
+  max-width: 300px;
+}
+.container > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  padding: 5px 0;
+  margin: 1rem 0;
+  transition: 0.1s;
+}
+.container > div:hover {
+  border-color: rgba(0, 0, 0, 0.8);
+}
+.container > div:focus-within {
+  border: 2px solid rgba(34, 130, 255, 0.9);
+}
+.container > div input {
+  display: inline-block;
+  padding: 5px;
+  outline: none;
+  border: none;
+  border-right: 1px solid rgba(0, 0, 0, 0.3);
+  width: 100%;
+  margin-left: 5px;
+}
+.container > div div {
+  cursor: pointer;
+  width: 100%;
+}
+.container > div div p {
+  text-align: center;
+}/*# sourceMappingURL=currencyExchangeStyle.css.map */
