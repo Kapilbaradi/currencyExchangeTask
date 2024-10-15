@@ -8,22 +8,25 @@
   </head>
   <body>
     <div class="container">
+      <h4>From:</h4>
       <div class="from-currency">
         <div class="currency-input">
-          <input type="text" />
+          <input type="text" id="from-input" value="1"/>
         </div>
-        <div class="dropdown">
-          <p>US</p>
+        <div class="dropdown" id="from">
+            <p id="from-currency">USD</p>
         </div>
       </div>
+      <h4>To:</h4>
       <div class="to-currency">
         <div class="currency-input">
-          <input type="text" />
+          <input type="text" id="to-input" value="1" readonly/>
         </div>
-        <div class="dropdown">
-          <p>US</p>
+        <div class="dropdown" id="to">
+            <p id="to-currency">USD</p>
         </div>
       </div>
     </div>
+    <script src="./currencyExchange.js"></script>
   </body>
 </html>

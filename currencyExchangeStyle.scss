@@ -9,9 +9,12 @@ $border-black: 1px solid rgba(0, 0, 0, 0.3);
 .container {
   margin: 3rem auto;
   max-width: 300px;
+  h4 {
+    font-weight: 400;
+    font-family: Arial, Helvetica, sans-serif;
+  }
   & > div {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     border: $border-black;
     border-radius: 5px;
@@ -19,10 +22,13 @@ $border-black: 1px solid rgba(0, 0, 0, 0.3);
     margin: 1rem 0;
     transition: 0.1s;
     &:hover {
-        border-color: rgba(0, 0, 0, 0.8);
+      border-color: rgba(0, 0, 0, 0.8);
     }
     &:focus-within {
-        border:2px solid rgba(34, 130, 255, 0.9);
+      border-color: rgba(0, 0, 0, 0.8);
+    }
+    &:first-child {
+      width: 60%;
     }
     input {
       display: inline-block;
@@ -33,12 +39,44 @@ $border-black: 1px solid rgba(0, 0, 0, 0.3);
       width: 100%;
       margin-left: 5px;
     }
-    div {
+    .dropdown {
       cursor: pointer;
       width: 100%;
+      position: relative;
       p {
         text-align: center;
       }
+      ul {
+        position: absolute;
+        top: 145%;
+        left: 0;
+        height: 0;
+        width: 100%;
+        overflow: hidden;
+        transition: 0.3s all;
+        border: $border-black;
+        border-top: none;
+        border-bottom: none;
+        li {
+          text-align: center;
+          list-style: none;
+          padding: 5px;
+
+          &:hover {
+            background-color: rgba(0, 0, 255, 0.8);
+            color: white;
+          }
+        }
+      }
     }
   }
+}
+
+.showDropDown {
+  height: 200px!important;
+  overflow: auto!important;  
+  scrollbar-width: none;
+  background-color: white;
+  z-index: 99;
+  border-bottom: $border-black!important;
 }
