@@ -30,18 +30,14 @@ const setConversionRates = (rates) => {
 const createDropDown = () => {
   dropdown.forEach((dropdownMenu) => {
     const ul = document.createElement("ul");
-    if (dropdownMenu.id === "from") {
-      ul.setAttribute("id", "from");
-    } else {
-      ul.setAttribute("id", "to");
-    }
+    ul.id = dropdownMenu.id;
 
     //creating li list and adding conversion contries which are fetched form api.
     conversion_rates_country.forEach((country) => {
       const li = document.createElement("li");
       li.textContent = country;
-      li.setAttribute("data-id", country);
-      li.addEventListener("click", convertCurrency);
+      li.dataset.id = country;
+      li.addEventListener("click", setCurrency);
       ul.appendChild(li);
     });
 
@@ -55,37 +51,39 @@ dropdown.forEach((dropdownMenu) => {
   });
 });
 
-function convertCurrency() {
+//setting currency
+function setCurrency() {
   const parentId = this.parentElement.id;
   if (parentId === "from") {
     fromCurrency.innerText = this.dataset.id;
   } else {
     toCurrency.innerText = this.dataset.id;
-
-    let findValue = {};
-    findValue.fromInput = conversion_rates[fromCurrency.innerText];
-    findValue.toInput = conversion_rates[this.dataset.id];
-
-    //converting the currency
-    const toValue = fromInput.value * (findValue.toInput / findValue.fromInput);
-
-    //setting currency value to toInput after conversion.
-    toInput.setAttribute("value", toValue.toFixed(3));
   }
+  convertCurrency();
+}
+
+// this function has the logic to convert currency.
+function convertCurrency() {
+  const fromCurrencyInput = conversion_rates[fromCurrency.innerText];
+  const toCurrencyInput = conversion_rates[toCurrency.innerText];
+
+  //converting the currency
+  const result = (fromInput.value * (toCurrencyInput / fromCurrencyInput)).toFixed(3);
+
+  //setting currency value to toInput after conversion.
+  toInput.value = result;
 }
 
 fromInput.addEventListener("input", (event) => {
-  fromInput.setAttribute("value", event.target.value);
+  fromInput.value = event.target.value;
+  convertCurrency();
 });
 
 getConversionRates();
 
 window.onclick = (event) => {
   dropdown.forEach((dropdownMenu) => {
-    if (
-      event.target.id !== "from-currency" &&
-      event.target.id !== "to-currency"
-    ) {
+    if (!dropdownMenu.contains(event.target)) {
       dropdownMenu.lastElementChild.classList.remove("showDropDown");
     }
   });

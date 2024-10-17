@@ -11,7 +11,7 @@
       <h4>From:</h4>
       <div class="from-currency">
         <div class="currency-input">
-          <input type="text" id="from-input" value="1"/>
+          <input type="text" id="from-input" value="1" onkeypress="return /[0-9]/.test(event.key)"/>
         </div>
         <div class="dropdown" id="from">
             <p id="from-currency">USD</p>
