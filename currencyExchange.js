@@ -10,7 +10,7 @@ let conversion_rates_country = null;
 const getConversionRates = async () => {
   try {
     const response = await fetch(
-      "https://v6.exchangerate-api.com/v6/64dfaf3170796fa062508c24/latest/usd"
+      "https://v6.exchangerate-api.com/v6/db818d764cb5126bc4ee0090/latest/USD"
     );
     const data = await response.json();
 
