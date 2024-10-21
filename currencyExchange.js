@@ -68,7 +68,10 @@ function convertCurrency() {
   const toCurrencyInput = conversion_rates[toCurrency.innerText];
 
   //converting the currency
-  const result = (fromInput.value * (toCurrencyInput / fromCurrencyInput)).toFixed(3);
+  const result = (
+    fromInput.value *
+    (toCurrencyInput / fromCurrencyInput)
+  ).toFixed(3);
 
   //setting currency value to toInput after conversion.
   toInput.value = result;
